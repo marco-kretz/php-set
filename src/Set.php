@@ -163,11 +163,22 @@ class Set implements \Countable
     }
 
     /**
+     * Removes all items from the Set.
+     */
+    public function clear()
+    {
+        unset($this->setList);
+        $this->setList = [];
+    }
+
+    /**
      * Get the hashcode identifying the items in the Set.
+     *
+     * TODO: Possible overflow?
      *
      * @return float HashCode for the items in the Set.
      */
-    public function hashCode(): float
+    public function hashCode(): int
     {
         $hash = 0;
 
