@@ -1,6 +1,11 @@
 <?php
 namespace MarcoKretz\PHPUtils;
 
+/**
+ * A simple Set implementation.
+ *
+ * A Set is a simple List, which does not contain duplicates.
+ */
 class Set implements \Countable
 {
     private $setList;
