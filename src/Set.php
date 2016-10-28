@@ -34,14 +34,21 @@ class Set implements \Countable
 
     /**
      * Add an array of items to the Set.
+     * Will not change the Set on failure.
      *
      * @param array $items The list of items to add.
      * @return bool Wether all items were added successfully or not.
      */
     public function addAll(array $items): bool
     {
+        $cache = $this->toArray();
+
         foreach ($items as $item) {
             if (!$this->add($item)) {
+                unset($this->setList);
+                $this->setList = [];
+                $this->addAll($cache);
+
                 return false;
             }
         }
@@ -88,14 +95,20 @@ class Set implements \Countable
 
     /**
      * Remove multiple items from the Set at once.
+     * Will not change the Set on failure.
      *
      * @param array $items List of Items to remove from the Set.
      * @return bool Wether all items have been removed successfully or not.
      */
     public function removeAll(array $items): bool
     {
+        $cache = $this->toArray();
         foreach ($items as $item) {
             if (!$this->remove($item)) {
+                unset($this->setList);
+                $this->setList = [];
+                $this->setList->addAll($cache);
+
                 return false;
             }
         }

@@ -15,7 +15,7 @@ class SetTest extends PHPUnit_Framework_TestCase
     {
         $this->set->add(5);
         $this->set->add(5);
-        $this->assertTrue(count($this->set) === 1);
+        $this->assertEquals(1, count($this->set));
     }
 
     public function testSetAdd2()
@@ -24,7 +24,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->add(2);
         $this->set->add(3);
 
-        $this->assertTrue(count($this->set) === 3);
+        $this->assertEquals(3, count($this->set));
     }
 
     public function testSetAdd3()
@@ -36,7 +36,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->add(2);
         $this->set->add(3);
 
-        $this->assertTrue(count($this->set) === 3);
+        $this->assertEquals(3, count($this->set));
     }
 
     public function testSetAdd4()
@@ -49,7 +49,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->add(new Set());
         $this->set->add(47.11);
 
-        $this->assertTrue(count($this->set) === 7);
+        $this->assertEquals(7, count($this->set));
     }
 
     public function testSetAddAll1()
@@ -60,7 +60,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->add(5);
         $this->set->addAll($addItems);
 
-        $this->assertTrue(count($this->set) === 6);
+        $this->assertEquals(6, count($this->set));
     }
 
     public function testSetAddAll2()
@@ -71,7 +71,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->add(5);
         $this->set->addAll($addItems);
 
-        $this->assertTrue(count($this->set) === 3);
+        $this->assertEquals(3, count($this->set));
     }
 
     public function testSetRemove1()
@@ -80,7 +80,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->addAll($initialItem);
         $this->set->remove(3);
 
-        $this->assertTrue(array_search(4, $this->set->toArray()) === 2);
+        $this->assertEquals(2, array_search(4, $this->set->toArray()));
     }
 
     public function testSetRemove2()
@@ -89,7 +89,7 @@ class SetTest extends PHPUnit_Framework_TestCase
         $this->set->addAll($initialItem);
         $this->set->remove(3);
 
-        $this->assertTrue(array_search(3, $this->set->toArray()) === false);
+        $this->assertFalse(array_search(3, $this->set->toArray()));
     }
 
     public function testSetIsEmpty1()
