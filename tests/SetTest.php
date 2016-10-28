@@ -195,4 +195,16 @@ class SetTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($this->set->equals($compareSet));
     }
+
+    /**
+     * Test if Set is iteratable,
+     */
+    public function testSetIteration()
+    {
+        $values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        $this->set->addAll($values);
+        foreach ($this->set as $index => $setItem) {
+            $this->assertEquals($values[$index], $setItem);
+        }
+    }
 }

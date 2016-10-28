@@ -6,7 +6,7 @@ namespace MarcoKretz\PHPUtils;
  *
  * A Set is a simple List, which does not contain duplicates.
  */
-class Set implements \Countable
+class Set implements \Countable, \Iterator
 {
     private $setList;
 
@@ -191,5 +191,30 @@ class Set implements \Countable
         }
 
         return $hash;
+    }
+
+    public function rewind()
+    {
+        reset($this->setList);
+    }
+
+    public function current()
+    {
+        return current($this->setList);
+    }
+
+    public function key()
+    {
+        return key($this->setList);
+    }
+
+    public function next()
+    {
+        return next($this->setList);
+    }
+
+    public function valid()
+    {
+        return $this->current() !== false;
     }
 }
