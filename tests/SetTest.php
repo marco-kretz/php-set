@@ -2,12 +2,12 @@
 
 namespace MarcoKretz\PHPUtilsTest;
 
-use MarcoKretz\PHPUtils\Set;
+use MarcoKretz\PHPUtils\HashSet;
 
 /**
  * PHPUnit class for testing the Set class.
  */
-class SetTest extends \PHPUnit_Framework_TestCase
+class HashSetTest extends \PHPUnit_Framework_TestCase
 {
     private $set;
 
@@ -16,7 +16,7 @@ class SetTest extends \PHPUnit_Framework_TestCase
      */
     public function __construct()
     {
-        $this->set = new Set();
+        $this->set = new HashSet();
     }
 
     /**
@@ -71,8 +71,8 @@ class SetTest extends \PHPUnit_Framework_TestCase
         $this->set->add("World");
         $this->set->add("hello");
         $this->set->add("world");
-        $this->set->add(new Set());
-        $this->set->add(new Set());
+        $this->set->add(new HashSet());
+        $this->set->add(new HashSet());
         $this->set->add(47.11);
 
         $this->assertEquals(7, count($this->set));
@@ -174,7 +174,7 @@ class SetTest extends \PHPUnit_Framework_TestCase
     public function testSetEquals1()
     {
         $values = [5, 8, 'test'];
-        $compareSet = new Set();
+        $compareSet = new HashSet();
         $compareSet->addAll($values);
         $this->set->addAll($values);
 
@@ -188,7 +188,7 @@ class SetTest extends \PHPUnit_Framework_TestCase
     public function testSetEquals2()
     {
         $values = [5, 8, 'test'];
-        $compareSet = new Set();
+        $compareSet = new HashSet();
         $compareSet->add('fail');
         $compareSet->addAll($values);
         $this->set->addAll($values);
